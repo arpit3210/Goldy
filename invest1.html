@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="app.js"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Goldy</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- <script src="js/web3.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script> -->
+
+  <script src="app.js"></script>
+
+
+
+
+  <script>
+
+
+
+
+
+ function TokenBalance()
+ {
+  
+      if (typeof window.ethereum !== 'undefined') {
+        // Request account access if needed
+        window.ethereum.request({ method: 'eth_requestAccounts' })
+          .then(function (accounts) {
+            const connectedAddress = accounts[0];
+
+            // Replace 'myContract' with your ERC20 token contract instance
+            myContract.methods.balanceOf(connectedAddress).call()
+              .then(function (balance) {
+                console.log('Token Balance:', balance);
+                // Add any additional handling logic for the token balance
+
+                // Update the token balance on the website
+                document.getElementById('Token-balance').innerText = 'Goldy Token Balance: ' + balance;
+              })
+              .catch(function (error) {
+                console.error('Token Balance Error:', error);
+                // Add any error handling logic
+              });
+          })
+          .catch(function (error) {
+            console.error('Account Error:', error);
+            // Add any error handling logic for retrieving accounts
+          });
+      } else {
+        console.error('Ethereum provider not found');
+        // Add handling logic for when Ethereum provider is not available
+      }
+   
+ }
+
+
+
+
+
+
+
+
+
+
+    function transfer() {
+
+      document.getElementById('waitingScreen').style.display = 'block';
+
+      const address = document.getElementById('address').value;
+      const tokenAmount = document.getElementById('token_amount').value;
+
+      if (typeof window.ethereum !== 'undefined') {
+        // Request account access if needed
+        window.ethereum.request({ method: 'eth_requestAccounts' })
+          .then(function (accounts) {
+            const connectedAddress = accounts[0];
+
+            // Perform the ERC20 token transfer
+            myContract.methods.transfer(address, tokenAmount)
+              .send({ from: connectedAddress })
+              .on('transactionHash', function (hash) {
+                console.log('Transaction Hash:', hash);
+                // Add any additional handling logic for the transaction hash
+                document.getElementById('transactionHash').innerText = 'Transaction Hash: ' + hash;
+              })
+              .on('receipt', function (receipt) {
+                console.log('Transaction Receipt:', receipt);
+                alert('You have sent ' + tokenAmount + ' Tokens to ' + address + ' address');
+
+
+
+                // Add any additional handling logic for the transaction receipt
+                // document.getElementById('transactionReceipt').innerText = 'Transaction Receipt: ' + JSON.stringify(receipt);
+
+                document.getElementById('waitingScreen').style.display = 'none';
+
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+
+
+                // Show success message or perform any other actions
+                alert('Transaction completed successfully!');
+
+                // Extract the desired data from the receipt object
+                const blockHash = receipt.blockHash;
+                const blockNumber = receipt.blockNumber;
+                // const contractAddress = receipt.contractAddress;
+                // const cumulativeGasUsed = receipt.cumulativeGasUsed;
+                // const effectiveGasPrice = receipt.effectiveGasPrice;
+                // const from = receipt.from;
+                // const gasUsed = receipt.gasUsed;
+                // const logsBloom = receipt.logsBloom;
+                // const status = receipt.status;
+                // const to = receipt.to;
+                // const transactionHash = receipt.transactionHash;
+                // const transactionIndex = receipt.transactionIndex;
+                // const type = receipt.type;
+
+                // Display the extracted data on the website
+                document.getElementById('blockHash').innerText = 'Block Hash: ' + blockHash;
+                document.getElementById('blockNumber').innerText = 'Block Number: ' + blockNumber;
+                // document.getElementById('contractAddress').innerText = 'Contract Address: ' + contractAddress;
+                // document.getElementById('cumulativeGasUsed').innerText = 'Cumulative Gas Used: ' + cumulativeGasUsed;
+                // document.getElementById('effectiveGasPrice').innerText = 'Effective Gas Price: ' + effectiveGasPrice;
+                // document.getElementById('from').innerText = 'From: ' + from;
+                // document.getElementById('gasUsed').innerText = 'Gas Used: ' + gasUsed;
+                // document.getElementById('logsBloom').innerText = 'Logs Bloom: ' + logsBloom;
+                // document.getElementById('status').innerText = 'Status: ' + status;
+                // document.getElementById('to').innerText = 'To: ' + to;
+                // document.getElementById('transactionHash').innerText = 'Transaction Hash: ' + transactionHash;
+                // document.getElementById('transactionIndex').innerText = 'Transaction Index: ' + transactionIndex;
+                // document.getElementById('type').innerText = 'Type: ' + type;
+
+              })
+              .on('error', function (error) {
+                console.error('Transaction Error:', error);
+
+                document.getElementById('waitingScreen').style.display = 'none';
+
+                // Show error message or perform any other actions
+                alert('Transaction failed. Please try again.');
+
+                // Add any error handling logic
+              });
+          })
+          .catch(function (error) {
+            console.error('Account Error:', error);
+            // Add any error handling logic for retrieving accounts
+
+            // Add any error handling logic for retrieving accounts
+            // Hide the waiting screen
+            document.getElementById('waitingScreen').style.display = 'none';
+
+            // Show error message or perform any other actions
+            alert('Error accessing account. Please try again.');
+          });
+      } else {
+        console.error('Ethereum provider not found');
+        // Add handling logic for when Ethereum provider is not available
+        document.getElementById('waitingScreen').style.display = 'none';
+
+        // Show error message or perform any other actions
+        alert('Ethereum provider not found. Please make sure you have a compatible wallet installed.');
+
+      }
+    }
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+  <!-- =======================================================
+  * Template Name: Goldy
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/Goldy-bootstrap-Goldytics-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Goldy</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <!-- <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li> -->
+          <li><a class="get-a-quote" id="Connected" onclick="connectToMetaMask()">Connect To Metamask</a></li>
+          <button type="button" id="eth-balance" class="btn btn-success">Account Balance</button>
+          <button type="button" id="Token-balance" onclick="TokenBalance()" class="btn btn-warning">Tokens: 00</button>
+
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+        <div class="container position-relative">
+
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Address</label>
+            <input type="numbers" class="form-control" id="address"
+              placeholder="0x5691a4c27C4cff4F043347B693be15C4fcbDe5CE">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tokens Amount</label>
+            <input type="numbers" class="form-control" id="token_amount" placeholder="200">
+          </div>
+          <button type="button" onclick="transfer()" class="btn btn-success buy-gld">Buy Tokens Now</button>
+
+
+
+        </div>
+
+      </div>
+
+      <div id="balance"></div>
+
+      <div id="waitingScreen" style="display: none;">
+        <p>
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
+        Please wait, the transaction is being processed...</p>
+      </div>
+
+      <div id="successMessage" style="display: none;">
+
+        <div class="bg-success p-2 text-white">
+          <p>Transaction completed successfully!</p>
+        </div>
+      </div>
+
+
+      <div id="transactionHash"></div>
+
+
+      <!-- <div id="transactionReceipt"></div> -->
+
+      <div id="blockHash"></div>
+      <div id="blockNumber"></div>
+      <div id="contractAddress"></div>
+      <div id="contractAddress"></div>
+      <div id="effectiveGasPrice"></div>
+      <div id="from"></div>
+      <div id="gasUsed"></div>
+      <div id="to"></div>
+      <div id="transactionIndex"></div>
+      <div id="type"></div>
+      <div id="transactionDetails"></div>
+
+      <nav>
+
+
+        <span id="hash receipt"></span>
+
+
+        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+        <div id="preloader"></div>
+
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/aos/aos.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="dist/web3.min.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="app.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="app.js"></script>
+
+
+        <script>
+
+          // const myContract = new myContract(); 
+
+          window.addEventListener('load', function () {
+            if (typeof window.ethereum !== 'undefined') {
+              // Request account access if needed
+              window.ethereum.request({ method: 'eth_requestAccounts' })
+                .then(function (accounts) {
+                  const connectedAddress = accounts[0];
+
+                  // Replace 'myContract' with your ERC20 token contract instance
+                  myContract.methods.balanceOf(connectedAddress).call()
+                    .then(function (balance) {
+                      console.log('Token Balance:', balance);
+                      // Add any additional handling logic for the token balance
+
+                      // Update the token balance on the website
+                      document.getElementById('tokenBalance').innerText = 'Token Balance: ' + balance;
+                    })
+                    .catch(function (error) {
+                      console.error('Token Balance Error:', error);
+                      // Add any error handling logic
+                    });
+                })
+                .catch(function (error) {
+                  console.error('Account Error:', error);
+                  // Add any error handling logic for retrieving accounts
+                });
+            } else {
+              console.error('Ethereum provider not found');
+              // Add handling logic for when Ethereum provider is not available
+            }
+          });
+
+
+
+
+
+
+        </script>
+
+</body>
+
+</html>
