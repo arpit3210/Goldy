@@ -7,6 +7,22 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Goldy</title>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <script type="text/babel">
+    // THIS FOR upto REACT 17
+    // ReactDOM.render("welcome to react 17 !!", document.querySelector("div"))
+    
+    // This for react 18
+    const root = ReactDOM.createRoot(document.querySelector("div"));
+    root.render("Hello ! React  18")
+    
+    
+    </script>
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
