@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/cursor.css">
 
 
   <script>
@@ -35,6 +36,56 @@
         window.location.href = 'mailto:arpitsinghthakur321@gmail.com?subject=Hey,%20I%20want%20to%20know%20about%20your%20project.';
     }
 </script>
+
+<style>
+
+
+  .heading-anmate::before {
+content: attr(data-text);
+position: absolute;
+color: rgb(201, 181, 5);
+text-shadow: yellow 2px 5px 10px;
+width: 100px;
+overflow: hidden;
+white-space: nowrap;
+border-right: 4px solid  ;
+animation: animate 4s linear infinite;
+  }
+
+  @keyframes animate {
+
+0%,10%,100%{
+
+    width: 0%;
+
+}
+
+70%, 90%{
+
+    width: 34%;
+}
+
+}
+
+
+@media only screen and (max-width: 900px) {
+  @keyframes animate {
+
+0%,10%,100%{
+
+    width: 0%;
+
+}
+
+70%, 90%{
+
+    width: 100%;
+}
+
+}
+
+}
+</style>
 
 </head>
 
@@ -47,12 +98,12 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Untapped
+        <h1 style="font-size: 20px; text-shadow: yellow 2px 5px 10px;">Untapped
           <br>
-         <p style="font-size:24px; color:rgb(232, 232, 110);  ;"> Gold Tokens<p > 
+         <p style="font-size:16px; color:rgb(232, 232, 110);  "> Gold Tokens<p > 
 
          </h1>
-          <img style="height: 100px; margin-bottom:17px" src="../Logis/assets/img/logo_gold.png" alt="">
+          <img style="height: 10px; margin-bottom:17px" src="../Logis/assets/img/logo_gold.png" alt="">
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -91,8 +142,8 @@
           <!-- <li><a href="contact.html">Contact</a></li> -->
 
 
-          <li><a class="get-a-quote" href="https://goldy-dao.vercel.app/">UGT's DAO</a></li>
-          <li><a class="get-a-quote" href="invest1.html">Invest Now</a></li>
+          <li><a class="get-a-quote btn btn-warning" href="https://goldy-dao.vercel.app/">UGT's DAO</a></li>
+          <li><a class="get-a-quote btn btn-warning " href="invest1.html">Invest Now</a></li>
         </ul>
       </nav>
       
@@ -109,14 +160,15 @@
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h2 data-aos="fade-up">Maximize Your Wealth Potential with Untapped Gold Tokens</h2>
+          <h2 data-aos="fade-up">Maximize Your Wealth Potential with
+            <br> <span class="heading-anmate hover-this" style="color: black;" data-text="Untapped Gold Tokens">Untapped Gold Tokens</span></h2>
           <p data-aos="fade-up" data-aos-delay="100">Untapped Gold Tokens is an innovative investing platform that combines decentralized finance (DeFi) and the power of a decentralized autonomous organization (DAO) to revolutionize investment opportunities in gold and other precious metals.</p>
 
           <!-- <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200"> -->
             <!-- <input type="text" class="form-control" placeholder="xyx@outlook.com"> -->
             <!-- <button type="submit" class="btn btn-primary">Subscribe</button> -->
 
-            <button type="submit" class="btn btn-primary" onclick="sendEmail()">Email Us</button>
+            <button type="submit" class="btn btn-outline-warning" onclick="sendEmail()">Email Us</button>
           <!-- <a  href="https://goldy-dao.vercel.app/">  <button class="btn btn-primary" >Goldy DAO </button></a> -->
 
 
@@ -130,6 +182,8 @@
 
 
         </div>
+
+        <hr>
 
         <!-- <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
           <img id="svgs" src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
@@ -185,6 +239,8 @@
 
       </div>
 
+
+      <hr>
     </div>
     <!-- </video> -->
   </section><!-- End Hero Section -->
@@ -855,7 +911,7 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
-
+  <div class="cursor"></div>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -880,6 +936,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="./assets/js/cursor.js"></script>
+  
 
 </body>
 
