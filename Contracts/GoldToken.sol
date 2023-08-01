@@ -8,26 +8,22 @@ import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
 contract Gold is ERC20, ERC20Burnable, Ownable, ERC20Permit, ERC20Votes {
-    uint256 private tokenPrice = 3450;
-    uint256 private constant REDEMPTION_DELAY = 3 minutes;
-    // 0.000345 ether in wei
-    // 0.00000000000345 Ether is equal to 3450 wei.
 
 
-// 0x6e1AF83ea1eF41b2D5d6443fF79c17901A93e3a8     polygon mumbai testnet token contract address 
+        uint256 private tokenPrice = 20;
+    uint256 private constant REDEMPTION_DELAY = 2 minutes;
 
-//  0x6e1AF83ea1eF41b2D5d6443fF79c17901A93e3a8
+    // ** we can change the delay and price of token time as well according to our requirements.....
+
     struct Redemption {
         address account;
         uint256 amount;
         uint256 redeemTime;
     }
-//  0xcB9506D5A7a9213F114df2Ce4952f715695313dB       2 token
-//  0xE2eb091f60dEbE3f14B78e9374E4f481cfAfd153        1 token
-//  0x11e12ce121d62D4c0d0a291EDdf57986560CF71d         1 toekn
-//   0x80Cd3270c3a7650f0220e789375e5759375F2e98        1 tokeen
 
-//  0x08c4c066B9038eA4211B174c38d9FeeBe9Cd129D           9995  token
+    // 0x80Cd3270c3a7650f0220e789375e5759375F2e98   owner
+    //  0xc7DC86531407Ddc5B4C9C06C30F2aEa5eF8E652b   polygon contract address
+
     mapping(address => Redemption) private redemptions;
 
     constructor() ERC20("Gold", "GLD") ERC20Permit("Gold") {
