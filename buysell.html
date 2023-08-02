@@ -21,16 +21,63 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            
         }
+
+
+      
+    body {
+      background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 78%, rgba(252, 176, 69, 1) 100%);
+      color: rgb(243, 243, 243);
+
+      min-height: 100vh;
+    }
+
+    #thankyou {
+      /* background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(94, 253, 29, 1) 33%, rgba(252, 176, 69, 1) 100%);
+   text-align: center;
+   color: white; */
+    }
+
+    footer {
+   background-color: black;
+   color: aliceblue;
+      box-shadow: -12px -12px 15px 1px black;
+      box-shadow: 12px 12px 15px 1px black;
+      margin-top: 20px;
+      height: 50px;
+}
+  
+
+#tittles {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tittle1 {
+      font-size: 58px;
+      text-shadow: #FC0 1px 0 10px;
+      font-family: 'Noto Serif Vithkuqi', serif;
+    }
+
+    .tittle2 {
+      font-size: 38px;
+      text-shadow: #FC0 1px 0 10px;
+      font-family: 'Noto Serif Vithkuqi', serif;
+    }
     </style>
 </head>
 
 <body>
 
     <section>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+        <nav class="navbar" style="background-color: #08070367;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img style="height: 40px;" src="./assets/img/logo_gold.png" alt=""></a>
+                <a class="navbar-brand" href="./index.html"><img style="height: 40px;" src="./assets/img/logo_gold.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +85,7 @@
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://goldy-dao.vercel.app/">UGT DAO</a>
@@ -80,28 +127,36 @@
         <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
       </div>
 
-    <hr>
 
 
-    <section style="display: flex; align-items: center; justify-content: center;" class="main d-flex flex-wrap btn-group ">
+    <div id="tittles">
+        <span class="tittle1"><b>Untapped</b></span>
+  
+        <span class="tittle2"><b><span style="color: #FC0;">Gold</span> Tokens</b>🪙</span>
+      </div>
 
-        <button  id="address" type="button" class="btn btn-info">Address</button>
-        <button id="tokenbalance" type="button" class="btn btn-success">Token Balance</button>
-        <button id="polygonbala" type="button" class="btn btn-warning">Polygon Matic</button>
+
+    <section style="display: flex; align-items: center; justify-content: center; box-shadow: rgb(10, 9, 2) 10px 10px 10px;" class="main d-flex flex-wrap btn-group ">
+
+        <button  id="address"   style="text-shadow: black 10px 10px 10px;" type="button" class="btn btn-info"> <b>Address</b> </button>
+        <button id="tokenbalance"   style="text-shadow: black 10px 10px 10px;" type="button" class="btn btn-success"> <b>Token Balance</b> </button>
+        <button id="polygonbala"   style="text-shadow: black 10px 10px 10px;" type="button" class="btn btn-warning"> <b>Polygon Matic</b> </button>
 
 
-
+     
 
     </section>
 
+
     <!-- Price chart or price value  -->
-    <section class="price-cart ">
-        <div class="card bg-warning" style="width: 18rem;">
+    <section class="price-cart " >
+        <div class="card bg-warning" style="width: 18rem; border-radius: 30px; box-shadow: rgb(10, 9, 2) 10px 10px 20px 10px; background: rgb(252,173,69);
+        background: linear-gradient(90deg, rgba(252,173,69,1) 17%, rgba(241,234,5,1) 54%, rgba(252,173,69,1) 88%); ">
             <img src="./assets/img/logo_gold.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text">   </p>
 
-                    <p style="text-align: center; margin-bottom: 30px; font-size: large; text-shadow: red 3px 1px 7px ;" class="text-bg-warning  "><b>Gold Token</b></p>
+                    <p style="text-align: center; margin-bottom: 30px; font-size: large; text-shadow: red 3px 1px 7px ;" class="  "><b>Gold Token</b></p>
                     <p><b >Token Price : </b><span id="tokenprice" class="text-bg-info">000 MATIC</span></p>
                     <p><b>Token performance last 7 days</b> <span class="text-bg-success text-center">0.35% UP</span></p>
                     <!-- <p id="status2" style="color: white"></p> -->
@@ -113,21 +168,26 @@
     </section>
 
 
+<br>
 
-    <hr>
     <section style="display: flex; align-items: center; justify-content: center;" class="d-flex justify-content-evenly ">
 
-        <a href="./buying.html"><button type="button" class="btn btn-outline-success">Buy Tokens</button></a>
-        <a href="./selltoken.html"> <button type="button" class="btn btn-outline-danger">Sell Tokens</button></a>
+        <a href="./buying.html"><button style="box-shadow: rgb(10, 9, 2) 10px 10px 10px;" type="button" class="btn btn-success">Buy Tokens</button></a>
+        <a href="./selltoken.html"> <button style="box-shadow: rgb(10, 9, 2) 10px 10px 10px;" type="button" class="btn btn-danger">Sell Tokens</button></a>
 
         <!-- <button type="button" class="btn btn-outline-success">Buy Tokens</button> -->
         <!-- <button type="button" class="btn btn-outline-warning">Sell Tokens</button> -->
 
     </section>
 
-<section style="border-radius: 30px; border-color: aquamarine;" class="text-bg-info text-sm-center border-4 m-4 p-5">
+<section  style="border-radius: 30px; color: aliceblue; text-shadow: rgb(3, 3, 3) 1px 0 10px; border-color: aquamarine; box-shadow: rgb(10, 9, 2) 10px 10px 10px;
+   background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(94, 253, 29, 1) 33%, rgba(252, 176, 69, 1) 100%);
+      box-shadow: rgb(10, 9, 2) 10px 10px 10px;
+      text-align: center;
+       text-shadow: rgb(3, 3, 3) 1px 0 10px;" class="text-bg-info text-sm-center border-4 m-4 p-5">
 
-    Check your wallet amount before proceeding any further transaction
+    Check your wallet amount 🤑 before proceeding any further transaction 💸
 
 
 
@@ -202,11 +262,11 @@
     </script>
 
 
-<footer class="footer">
+<footer class="footer" style="background-color: black;">
   <div class="container">
       <div class="row">
-          <div class="col-md-12 text-center text-bg-secondary">
-              <p>Invest in cryptocurrency and gold with Untapped Gold Tokens (UGT). &copy; 2023 UGT. All rights reserved.</p>
+          <div class="col-md-12 text-center ">
+              <p>Invest in cryptocurrency and gold with Untapped Gold Tokens (UGT) 💌. &copy; 2023 UGT. All rights reserved.</p>
           </div>
       </div>
   </div>

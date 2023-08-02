@@ -1,127 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallet Connect</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet Connect</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 78%, rgba(252, 176, 69, 1) 100%);
+      color: rgb(243, 243, 243);
+    }
 
-    <style>
-        body{
-            background-color: rgb(224, 204, 15);
-            color: aliceblue;
+    main {
+      background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 78%, rgba(252, 176, 69, 1) 100%);
+      color: rgb(243, 243, 243);
+      height: 80vh;
 
-        
-        }
-    </style>
+    }
 
-<link rel="stylesheet" href="./assets/css/invest.css">
+    #thankyou {
+      background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(94, 253, 29, 1) 33%, rgba(252, 176, 69, 1) 100%);
+      box-shadow: 12px 12px 15px 1px black;
+      text-align: center;
+      color: aliceblue;
 
- <script
- src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.1-alpha.5/web3.min.js"
- integrity="sha512-NfffVWpEqu1nq+658gzlJQilRBOvjs+PhEKSjT9gkQXRy9OfxI2TOXr33zS7MgGyTpBa5qtC6mKJkQGd9dN/rw=="
- crossorigin="anonymous"
- referrerpolicy="no-referrer"
-></script>
+    }
+
+    footer {
+      color: aliceblue;
+      box-shadow: -12px -12px 15px 1px black;
+      box-shadow: 12px 12px 15px 1px black;
+      margin-top: 20px;
+      height: 50px;
+
+
+    }
+
+    #tittles {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tittle1 {
+      font-size: 58px;
+      text-shadow: #FC0 1px 0 10px;
+      font-family: 'Noto Serif Vithkuqi', serif;
+    }
+
+    .tittle2 {
+      font-size: 38px;
+      text-shadow: #FC0 1px 0 10px;
+      font-family: 'Noto Serif Vithkuqi', serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="./assets/css/invest.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.1-alpha.5/web3.min.js"
+    integrity="sha512-NfffVWpEqu1nq+658gzlJQilRBOvjs+PhEKSjT9gkQXRy9OfxI2TOXr33zS7MgGyTpBa5qtC6mKJkQGd9dN/rw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
+
 <body>
-    
-<section>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+  <header>
+    <section>
+      <nav class="navbar" style="background-color: #08070367;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img style="height: 40px;" src="./assets/img/logo_gold.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://goldy-dao.vercel.app/">UGT DAO</a>
-                    </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Link
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Link</a>
-                    </li> -->
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+          <a class="navbar-brand" href="./index.html"><img style="height: 40px;" src="./assets/img/logo_gold.png"
+              alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://goldy-dao.vercel.app/">UGT DAO</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          Link
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </li> -->
+              <!-- <li class="nav-item">
+                      <a class="nav-link disabled" aria-disabled="true">Link</a>
+                  </li> -->
+            </ul>
+            <form class="d-flex" role="search">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+            </form>
+          </div>
         </div>
-    </nav>
+      </nav>
 
 
-</section>
+    </section>
+  </header>
+
+  <main>
 
 
-<div class="position-relative m-4">
-    <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 1px;">
-      <div class="progress-bar" style="width: 0%"></div>
+
+    <div class="position-relative m-4">
+      <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0"
+        aria-valuemax="100" style="height: 1px;">
+        <div class="progress-bar" style="width: 0%"></div>
+      </div>
+      <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
+        style="width: 2rem; height:2rem;">1</button>
+      <button type="button"
+        class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill"
+        style="width: 2rem; height:2rem;">2</button>
+      <button type="button"
+        class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
+        style="width: 2rem; height:2rem;">3</button>
     </div>
-    <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
-    <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">2</button>
-    <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
-  </div>
 
-<section style="display: flex; align-items: center; justify-content: center;" class="main ">
 
-    <div id="" class="card text-center  mb-3" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><img src="./assets/img/metamask.png" alt=""></h5>
+    <div id="tittles">
+      <span class="tittle1"><b>Untapped</b></span>
+
+      <span class="tittle2"><b><span style="color: #FC0;">Gold</span> Tokens</b>🪙</span>
+    </div>
+
+
+    <section style="display: flex; align-items: center; justify-content: center;" class="main ">
+
+
+      <div id="" class="card text-center  mb-3"
+        style="width: 18rem; border-radius: 30px; overflow: hidden;  margin-top: 50px;  box-shadow: 12px 12px 15px 1px black;  ">
+        <div style="background: rgb(252,173,69);
+        background: linear-gradient(90deg, rgba(252,173,69,1) 17%, rgba(241,234,5,1) 54%, rgba(252,173,69,1) 88%);"
+          class="card-body">
+          <h5 class="card-title"><img src="./assets/img/metamask-removebg-preview.png" alt=""></h5>
           <p class="card-text"></p>
-          <a id="metamask"  href="#" class="btn btn-warning">Connect Wallet</a>
-       <a href="./buysell.html">   <div id="buttonContainer">
+          <a id="metamask" href="#" style="box-shadow: black 10px 10px 15px;" class="btn btn-warning">Connect Wallet</a>
+          <a href="./buysell.html">
+            <div id="buttonContainer">
 
-        
-        <div class="" id="countdown">
-        </div>
-        <!-- Existing content in the container -->
-      </div></a>
+
+              <div class="" id="countdown">
+              </div>
+              <!-- Existing content in the container -->
+            </div>
+          </a>
         </div>
       </div>
-      
-  
-
-</section>
-
-<section id="thankyou" style="border-radius: 30px; color: aliceblue; font-size: large;" class="text-bg-info text-sm-center border-4 m-4 p-5">
-
-  <span class="thankyou2">  Please Connect Your Metamask wallet  </span>
-
-
-  
-
-</section>
 
 
 
-<div>
+    </section>
 
-  <!-- <button class="btn btn-outline-danger">  <p id="status1" class="status" style="color: red">disconnected</p></button> -->
-    <p id="status2" style="color: white"></p>
-    <div class="maincontainer">
-      <!-- Connect Wallet -->
-      <!-- <div class="container">
+    <section id="thankyou" style="border-radius: 30px;  color: aliceblue; font-size: large;"
+      class="text-bg-info text-sm-center border-4 m-4 p-5">
+
+      <span style="color: aliceblue; text-shadow: rgb(3, 3, 3) 1px 0 10px;" class="thankyou2"> Please Connect Your
+        Metamask wallet </span>
+
+
+
+
+    </section>
+
+
+
+    <div>
+
+      <!-- <button class="btn btn-outline-danger">  <p id="status1" class="status" style="color: red">disconnected</p></button> -->
+      <p id="status2" style="color: white"></p>
+      <div class="maincontainer">
+        <!-- Connect Wallet -->
+        <!-- <div class="container">
         <div class="buttonswrapper">
           <div class="buttonswrapperGrid">
             <button id="metamask" class="button28">MetaMask</button>
@@ -129,16 +203,16 @@
         </div>
       </div> -->
 
-      <!-- Account Info Button -->
+        <!-- Account Info Button -->
 
-      <!-- <div class="secondcontainer">
+        <!-- <div class="secondcontainer">
         <button id="accountbutton" class="button49">
           Account Information
         </button>
       </div> -->
 
-      <!-- Send Transaction -->
-      <!-- <form>
+        <!-- Send Transaction -->
+        <!-- <form>
         <div class="inputcontainer">
           <input
             id="addressinput"
@@ -156,39 +230,44 @@
         </div>
       </form> -->
 
-      <!-- Mint -->
-      <!-- <div class="secondcontainer">
+        <!-- Mint -->
+        <!-- <div class="secondcontainer">
         <button id="mintbutton" class="button49">Mint</button>
         <p id="status3"></p>
       </div>
     </div> -->
 
-</div>
-
-<script>
-
-    
-</script>
-
-<script src="./assets/js/web333.js"></script>
-<section class="logo-slider"></section>
-
-<section class="footer"></section>
-
-<footer class="footer">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-12 text-center text-bg-secondary">
-              <p>Invest in cryptocurrency and gold with Untapped Gold Tokens (UGT). &copy; 2023 UGT. All rights reserved.</p>
-          </div>
       </div>
-  </div>
-</footer>
+
+      <script>
+
+
+      </script>
+
+      <script src="./assets/js/web333.js"></script>
+      <section class="logo-slider"></section>
+
+  </main>
+
+  <br class="m-5">
+  <section class="footer"></section>
+
+  <footer id="footer" style="background-color: black;" class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center p-1 ">
+          <p>Invest in cryptocurrency and gold with Untapped Gold Tokens (UGT) 💌. &copy; 2023 UGT. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
+
 </html>
