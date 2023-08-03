@@ -149,3 +149,43 @@ body {
       padding: 30px;
   }
 } */
+
+@media screen and (min-width: 374px) and (max-width: 666px) {
+
+    h5.card-title img {
+        max-width: 50%; 
+    }
+  
+    .card{
+      width: 100px;
+    }
+  
+    #thankyou{
+      height: 20px;
+    }
+  
+    footer{
+      margin-top: 10px;
+    font-size: x-small;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+  
+    
+    #tittles {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .tittle1 {
+      font-size: 30px;
+    }
+  
+    .tittle2 {
+      font-size: 20px;
+    }
+    }
